@@ -1,0 +1,29 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.118.130.55/txdb
+    username: tlwfplat123
+    password: tlwfplat123
+    type: com.alibaba.druid.pool.DruidDataSource
+    dbcp2:
+      min-idle: 10
+      initial-size: 10
+      max-total: 15
+      max-wait-millis: 1000
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    jdbc-type-for-null: 'null'
+  type-aliases-package: com.example.utilsdemo.model
+  mapperLocations: classpath*:com/example/utilsdemo/dao/mapper/*Mapper.xml
+logging:
+  level:
+    org.springframework.boot.autoconfigure: info
+    com.example.utilsdemo.dao: debug
+  file:
+    path: D:/utilsdemo/log.log
+
+upload:
+  path: D://utilsDemo/data/excel/
