@@ -232,6 +232,14 @@
             <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
             <version>1.2.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/edu.wlu.cs.levy.CG/kd -->
+        <dependency>
+            <groupId>edu.wlu.cs.levy.CG</groupId>
+            <artifactId>kd</artifactId>
+            <version>1.0</version>
+            <scope>runtime</scope>
+        </dependency>
+
 
     </dependencies>
 
