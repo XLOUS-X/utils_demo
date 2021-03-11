@@ -25,7 +25,7 @@ public class MQBaseMsg implements Serializable {
     private double yaw;
     private int roll;
     private int pitch;
-    private String acceleration;
+    private double[] acceleration;
     private int speed;
     private int location_valid;
     private int drive_mode;

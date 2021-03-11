@@ -1,5 +1,6 @@
 package com.example.utilsdemo.utils;
 
+import com.example.utilsdemo.entity.NewSocketMsg;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 
@@ -15,7 +16,7 @@ public class HttpClientUtil {
         MediaType mediaType = MediaType.parse("application/json;charset=utf-8");
         RequestBody body = RequestBody.create(mediaType, json);
         Request request = new Request.Builder()
-                .url("http://172.10.18.83:10080" + ipURL)
+                .url("http://localhost:9089" + ipURL)
                 .post(body)
                 .addHeader("Content-Type", "application/json;charset=utf-8")
                 .addHeader("cache-control", "no-cache")
@@ -83,4 +84,16 @@ public class HttpClientUtil {
         return statue;
     }
 
+    public static NewSocketMsg initNewSocketMsg(){
+        NewSocketMsg newSocketMsg = new NewSocketMsg();
+        newSocketMsg.setTimestamp("2021-03-10 11:27:52.692");
+        newSocketMsg.setYtip("172.10.20.17");
+        newSocketMsg.setYzw("1");
+        newSocketMsg.setUsername("admin");
+        newSocketMsg.setPassword("admin123");
+        newSocketMsg.setP(24000);
+        newSocketMsg.setT(1100);
+        newSocketMsg.setZ(0);
+        return newSocketMsg;
+    }
 }
