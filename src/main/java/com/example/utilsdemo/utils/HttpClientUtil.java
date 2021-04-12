@@ -96,4 +96,40 @@ public class HttpClientUtil {
         newSocketMsg.setZ(0);
         return newSocketMsg;
     }
+
+
+    public static String[] sentGPGHttpClient2(String ipURL, String json) {
+        //OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+                .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+                .readTimeout(5, TimeUnit.MINUTES) // read timeout
+                .build();
+        MediaType mediaType = MediaType.parse("application/json;charset=utf-8");
+        RequestBody body = RequestBody.create(mediaType, json);
+        Request request = new Request.Builder()
+                .url("http://localhost:9089" + ipURL)
+                .post(body)
+                .addHeader("Content-Type", "application/json;charset=utf-8")
+                .addHeader("cache-control", "no-cache")
+                .addHeader("Postman-Token", "b1ae3565-90ff-4345-8980-1d124141b9e2")
+                .addHeader("Connection", "Keep-Alive")
+                .build();
+        String[] responseMsg = null;
+        try {
+            Response response = client.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                log.error("Unexpected code " + response);
+                throw new IOException("Unexpected code " + response);
+            }
+            String responseBody = response.body().string();
+            log.info("消息体" + "+" + responseBody);
+            responseMsg = responseBody.split("\\+");
+
+            log.info("消息体内容" + "+" + response.toString());
+        } catch (IOException e) {
+            log.error(e.toString());
+        }
+        return responseMsg;
+    }
 }

@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/test")
-    public void test(){
+    public void test() {
         NewSocketMsg json = HttpClientUtil.initNewSocketMsg();
-        HttpClientUtil.sentHttpClient("/camera/configMsg", JSON.toJSONString(json));
+        String[] sentGPGHttpClient2 = HttpClientUtil.sentGPGHttpClient2("/camera/test", "");
+        for (int i = 0; i < sentGPGHttpClient2.length; i++) {
+            System.out.println(sentGPGHttpClient2[i]);
+        }
     }
 }
